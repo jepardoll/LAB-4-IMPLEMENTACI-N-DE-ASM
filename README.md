@@ -464,11 +464,11 @@ A continuación se evidencia el resultado obtenido:
 
 ### Resultado de la simulación
 
-![Consola](Imagenes/ConsolaSim.png)
+![Consola](Imágenes/GTKW2.png)
 
 ### Barrido cíclico de filas, detección de tecla y pulso único 
 
-![GTKWave Sostenida](Imagenes/GTKWave_Sostenida.png)
+![GTKWave Sostenida](Imágenes/GTKW1.png)
 
 ## 4. Dominio Físico
 
