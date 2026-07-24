@@ -510,3 +510,5 @@ La implementación completa del esquemático electrónico se divide en cuatro et
 * **Etapa de Entrada de Usuario y Visualización:** Teclado matricial de membrana de 4x4 conectado mediante su bus de ocho líneas, y conjunto de LEDs indicadores que traducen el código binario de la tecla detectada en una representación visual verificable.
 
 ![Montaje Físico](Imágenes/TECLADO.jpeg)
+![Montaje Físico](Imágenes/TECLADO2.jpeg)
+![Montaje Físico](Imágenes/TECLADO3.jpeg)
