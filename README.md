@@ -512,3 +512,7 @@ La implementación completa del esquemático electrónico se divide en cuatro et
 ![Montaje Físico](Imágenes/TECLADO.jpeg)
 ![Montaje Físico](Imágenes/TECLADO2.jpeg)
 ![Montaje Físico](Imágenes/TECLADO3.jpeg.png)
+
+A continuación se presenta un video del funcionamiento del Teclado 4x4 implementando lo descrito anteriormente
+
+https://drive.google.com/file/d/1Hor3C2aKQSnIuJgZ4f93uryidnOupSmi/view?usp=sharing
