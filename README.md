@@ -267,7 +267,7 @@ Esquemático estructural que implementa las transiciones secuenciales y el decod
 A continuación se presenta su representación RTL:
 
 
-![RTL](Imagenes/top.png)
+![RTL](Imágenes/RTL.png)
 
 * **Registros de Barrido y Comparadores:** Estructuras internas de Flip-Flops tipo D que guardan los estados de la máquina, el índice de fila, el acumulador de permanencia y el enclavamiento, interconectados con sumadores y compuertas lógicas de comparación para determinar la condición de desborde del acumulador y la detección de pulsación.
 
