@@ -31,7 +31,6 @@ Describe el algoritmo de toma de decisiones y las prioridades del sistema:
 El enclavamiento `sostenida` se limpia exclusivamente cuando la condición `libreCols` indica que todas las columnas retornaron a nivel alto, lo que materializa el requisito de un pulso por pulsación.
 
 ![Diagrama ASM](Imagenes/DiagramaASM.png)
-![Diagrama ASM Detalle](Imagenes/DiagramaASM2.png)
 
 ### Ecuaciones Booleanas
 
@@ -78,12 +77,7 @@ A partir de las ecuaciones obtenidas, el comportamiento del sistema se describe 
 //==============================================================================
 //  TecladoMatricial  --  Controlador de barrido de teclado 4x4  (ASM)
 //------------------------------------------------------------------------------
-//  ESPECIFICACION
-//    Explora un teclado matricial 4x4 activando una fila a la vez y leyendo
-//    las cuatro columnas. Entrega el codigo de la tecla pulsada junto con un
-//    pulso de validacion de UN solo ciclo por pulsacion (sin repeticion
-//    mientras la tecla siga presionada).
-//
+
 //  ENTRADAS
 //    clk        : reloj del sistema (50 MHz en la FPGA)
 //    rst        : reset asincrono, activo en alto
@@ -100,12 +94,7 @@ A partir de las ecuaciones obtenidas, el comportamiento del sistema se describe 
 //      en la FPGA vale 50_000 ciclos = 1 ms; el testbench lo reduce.
 //    - Salidas registradas: no hay caminos combinacionales de entrada a
 //      salida (evita glitches).
-//
-//  PROPOSITO DE LA ASM
-//    El barrido no puede ser combinacional: exige SECUENCIA (activar fila,
-//    esperar estabilizacion, leer, decidir) y MEMORIA (que fila toca, si la
-//    tecla ya fue reportada). La ASM captura ese orden temporal y las
-//    decisiones asociadas, que luego se traducen a la FSM en Verilog.
+
 //==============================================================================
 module top #(
     parameter PASO = 50_000     // ciclos por fila (1 ms @50MHz). TB: usar 4
@@ -326,11 +315,18 @@ module top_tb;
   reg        clk = 0;
   always #(`TIME_UNIT) clk = !clk;      // reloj simulado (periodo 20 ns)
 
-  reg        rst      = 1'b1;
-  reg  [3:0] columnas = 4'b1111;        // 1111 = ninguna tecla pulsada
+  reg        rst = 1'b1;
   wire [3:0] filas;
   wire [3:0] codigoTecla;
   wire       teclaValida;
+
+  // ---- EMULACION DE LA MATRIZ FISICA DEL TECLADO ----
+  reg        teclaPresionada = 1'b0;
+  reg  [1:0] filaTecla       = 2'd0;
+  reg  [3:0] patronTecla     = 4'b1111;
+
+  wire [3:0] columnas = (teclaPresionada && (filas[filaTecla] === 1'b0))
+                        ? patronTecla : 4'b1111;
 
   integer    pulsos  = 0;
   integer    errores = 0;
@@ -370,24 +366,23 @@ module top_tb;
   //---------------------------------------------------------------
   //  Tareas de estimulo
   //---------------------------------------------------------------
-  task pulsarTecla;               // espera a que el barrido llegue a la
-    input [1:0] filaObj;          // fila objetivo y cierra el contacto
-    input [3:0] patronCol;
-    integer espera;
-    begin
-      espera = 0;
-      while (filas[filaObj] !== 1'b0 && espera < 2000) begin
-        @(posedge clk); espera = espera + 1;
-      end
-      columnas = patronCol;
-      repeat (20) @(posedge clk);
+  task pulsarTecla;               // cierra el contacto de una tecla y la
+    input [1:0] filaObj;          // mantiene pulsada. Ya NO hay que
+    input [3:0] patronCol;        // sincronizar con el barrido: la matriz
+    begin                         // emulada se encarga sola.
+      filaTecla       = filaObj;
+      patronTecla     = patronCol;
+      teclaPresionada = 1'b1;
+      // sostener lo suficiente para cubrir una vuelta completa del barrido
+      repeat (60) @(posedge clk);
     end
   endtask
 
   task soltarTecla;
     begin
-      columnas = 4'b1111;
-      repeat (30) @(posedge clk);
+      teclaPresionada = 1'b0;       // se abre el contacto
+      // margen para que el DUT limpie el enclavamiento 'sostenida'
+      repeat (40) @(posedge clk);
     end
   endtask
 
@@ -475,19 +470,11 @@ A partir del testbench verificamos que nuestra implementación del controlador e
 
 A continuación se evidencia el resultado obtenido:
 
-### Resultado de la verificación en consola
+### Resultado de la simulación
 
 ![Consola](Imagenes/ConsolaSim.png)
 
-### Barrido cíclico de filas (GTKWave)
-
-![GTKWave Barrido](Imagenes/GTKWave_Barrido.png)
-
-### Detección de tecla y pulso único (GTKWave)
-
-![GTKWave Pulso](Imagenes/GTKWave_Pulso.png)
-
-### Inhibición de repetición con tecla sostenida (GTKWave)
+### Barrido cíclico de filas, detección de tecla y pulso único 
 
 ![GTKWave Sostenida](Imagenes/GTKWave_Sostenida.png)
 
