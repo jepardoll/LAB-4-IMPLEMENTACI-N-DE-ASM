@@ -17,7 +17,8 @@ Establece las fronteras del sistema, definiendo claramente las señales de entra
 * **Entradas:** Reloj maestro (`clk`) de la tarjeta FPGA, reset asíncrono (`rst`) y el bus de las cuatro líneas de columna del teclado (`columnas[3:0]`, activas en bajo con resistencia de pull-up).
 * **Salidas:** Bus de exploración de las cuatro líneas de fila (`filas[3:0]`, activas en bajo, con una sola línea en `0` a la vez), el código binario de la tecla detectada (`codigoTecla[3:0]`) y la señal de validación (`teclaValida`).
 
-![Caja Negra](Imagenes/CajaNegra.png)
+![Caja Negra](Imágenes/DiagramaDeCajaNegra.png)
+
 
 ### Diagrama de Flujo (ASM)
 
