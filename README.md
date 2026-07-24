@@ -75,7 +75,7 @@ A partir de las ecuaciones obtenidas, el comportamiento del sistema se describe 
 
 ```verilog
 //==============================================================================
-//  TecladoMatricial  --  Controlador de barrido de teclado 4x4  (ASM)
+//  TecladoMatricial  --  Controlador de barrido de teclado 4x4
 //------------------------------------------------------------------------------
 
 //  ENTRADAS
@@ -265,15 +265,6 @@ Esquemático estructural que implementa las transiciones secuenciales y el decod
 
 A continuación se presenta su representación RTL:
 
-### Decodificador de Tecla
-
-![Decoder](Imagenes/DecoderTecla.png)
-
-### Registro de Estado y Red de Transición
-
-![Registro Estado](Imagenes/RegistroEstado.png)
-
-### RTL
 
 ![RTL](Imagenes/top.png)
 
