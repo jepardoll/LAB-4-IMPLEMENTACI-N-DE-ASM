@@ -10,6 +10,16 @@ El proyecto está estructurado bajo tres dominios fundamentales del diseño elec
 
 Este dominio define *qué* hace el sistema, sus interfaces y su lógica de control algorítmica, sin entrar en detalles de la implementación del hardware interno.
 
+### Distribución teclado matricial 4x4:
+
+| | Columna 0 | Columna 1 | Columna 2 | Columna 3 |
+| :---: | :---: | :---: | :---: | :---: |
+| **Fila 0** | 1 | 2 | 3 | A |
+| **Fila 1** | 4 | 5 | 6 | B |
+| **Fila 2** | 7 | 8 | 9 | C |
+| **Fila 3** | * | 0 | # | D |
+
+
 ### Diagrama de Caja Negra
 
 Establece las fronteras del sistema, definiendo claramente las señales de entrada (estímulos y sensores) y las señales de salida (actuadores e indicadores).
