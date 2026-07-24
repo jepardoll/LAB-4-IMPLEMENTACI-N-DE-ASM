@@ -509,4 +509,4 @@ La implementación completa del esquemático electrónico se divide en cuatro et
 * **Etapa de Acoplamiento y Protección:** Resistencias de pull-up internas configuradas sobre el bus de columnas, que fijan el nivel lógico alto en reposo y garantizan una transición limpia a nivel bajo al cerrarse el contacto de una tecla.
 * **Etapa de Entrada de Usuario y Visualización:** Teclado matricial de membrana de 4x4 conectado mediante su bus de ocho líneas, y conjunto de LEDs indicadores que traducen el código binario de la tecla detectada en una representación visual verificable.
 
-![Montaje Físico](Imagenes/MontajeFisico.jpeg)
+![Montaje Físico](Imágenes/TECLADO.jpeg)
