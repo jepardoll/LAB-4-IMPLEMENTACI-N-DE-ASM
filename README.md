@@ -521,8 +521,6 @@ Para que la FPGA interactúe con el entorno, se realiza la asignación de pines 
 
 La habilitación de las resistencias de pull-up internas sobre el bus de columnas constituye un requisito indispensable del diseño. Sin ellas las entradas quedan en estado flotante y el decodificador genera lecturas espurias.
 
-![Pin Planner](Imagenes/PinPlanner.png)
-
 ### Circuito Físico Integrado
 
 La implementación completa del esquemático electrónico se divide en cuatro etapas principales interconectadas alrededor de la FPGA:
