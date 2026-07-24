@@ -31,7 +31,7 @@ Describe el algoritmo de toma de decisiones y las prioridades del sistema:
 
 El enclavamiento `sostenida` se limpia exclusivamente cuando la condición `libreCols` indica que todas las columnas retornaron a nivel alto, lo que materializa el requisito de un pulso por pulsación.
 
-![Diagrama ASM](Imagenes/DiagramaASM.png)
+![Diagrama ASM](Imágenes/ASM.png)
 
 ### Ecuaciones Booleanas
 
