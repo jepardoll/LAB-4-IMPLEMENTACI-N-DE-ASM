@@ -511,4 +511,4 @@ La implementación completa del esquemático electrónico se divide en cuatro et
 
 ![Montaje Físico](Imágenes/TECLADO.jpeg)
 ![Montaje Físico](Imágenes/TECLADO2.jpeg)
-![Montaje Físico](Imágenes/TECLADO3.jpeg)
+![Montaje Físico](Imágenes/TECLADO3.jpeg.png)
